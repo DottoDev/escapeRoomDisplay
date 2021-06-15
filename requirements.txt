@@ -1,0 +1,4 @@
+﻿pip~=21.1.2
+PyQt5~=5.15.4
+shiboken6~=6.1.0
+setuptools~=57.0.0
