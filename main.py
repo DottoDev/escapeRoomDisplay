@@ -2,8 +2,8 @@ import json
 import sys
 import time
 
-from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
+from PyQt5.QtWidgets import *
 
 
 class GuiLayout(QWidget):
@@ -14,37 +14,33 @@ class GuiLayout(QWidget):
     def ui(self):
 
         def hideInputFields():
-            grid.removeWidget(spinBox1)
+            # grid.removeWidget(spinBox1)
             spinBox1.deleteLater()
-            grid.removeWidget(spinBox2)
+            # grid.removeWidget(spinBox2)
             spinBox2.deleteLater()
-            grid.removeWidget(spinBox3)
+            # grid.removeWidget(spinBox3)
             spinBox3.deleteLater()
-            grid.removeWidget(submitButton)
+            # grid.removeWidget(submitButton)
             submitButton.deleteLater()
 
-
-        def changeLAyoutToFinished(self):
+        def changeLayoutToFinished():
             hideInputFields()
 
-            label = QLabel(self)
+            label = QLabel()
             label.setText(outputString)
             label.setAlignment(QtCore.Qt.AlignCenter)
-            grid.addWidget(label, 0 , 0)
-            print("Done")
+            grid.addWidget(label, 0, 0)
 
         def wrongAnswer():
-            hideInputFields()
-            time.sleep(3)
-            spinBox1, spinBox2, spinBox3, submitButton = createButtons()
-            grid.addWidget(spinBox1, 2, 0)
-            grid.addWidget(spinBox2, 2, 1)
-            grid.addWidget(spinBox3, 2, 2)
-            grid.addWidget(submitButton, 4, 1)
-            print("a")
+            time.sleep(5)
+            msg = QMessageBox()
+            msg.setWindowTitle("Falsche Eingabe")
+            msg.setText("Ihre Eingabe ist nicht korrekt")
+            msg.exec()
+
 
         def rightAnswer():
-            changeLAyoutToFinished(self)
+            changeLayoutToFinished()
 
         def validateInput():
             if spinBox1.value() == requiredValue1:
@@ -77,6 +73,7 @@ class GuiLayout(QWidget):
             submitButton = QPushButton("Bestätigen")
 
             return spinBox1, spinBox2, spinBox3, submitButton
+
         def createGrid():
 
             spinBox1, spinBox2, spinBox3, submitButton = createButtons()
@@ -103,8 +100,6 @@ def main():
 
 
 if __name__ == "__main__":
-
-
     settings = json.load(open("settings.json"))
 
     requiredValue1 = settings["requiredValue1"]
