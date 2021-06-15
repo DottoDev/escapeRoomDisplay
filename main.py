@@ -88,7 +88,7 @@ class GuiLayout(QWidget):
         self.setLayout(grid)
         self.setGeometry(0, 0, 1920, 1080)
         self.setWindowTitle('Escape Room')
-        self.showMaximized()
+        self.showFullScreen()
 
         submitButton.clicked.connect(submitButtonClicked)
 
