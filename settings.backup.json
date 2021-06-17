@@ -1,6 +1,5 @@
 {
-  "requiredValue1"  : 0,
-  "requiredValue2"  : 0,
-  "requiredValue3"  : 0,
-  "outputString"    : "Output"
+  "requiredValue": 0,
+  "outputString": "Output",
+  "timeAfterWrongInput": 5
 }
