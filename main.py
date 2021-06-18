@@ -6,6 +6,7 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import *
+from qt_material import apply_stylesheet
 
 
 class GuiLayout(QWidget):
@@ -57,7 +58,10 @@ class GuiLayout(QWidget):
         #     return False
 
         def validateInputOfText():
-            input = int(lineInput.text())
+            input = lineInput.text()
+            if input == "":
+                input = 000
+            input = int(input)
             return input == requiredValue
 
         def submitButtonClicked():
@@ -119,8 +123,9 @@ class GuiLayout(QWidget):
 
 
 def main():
-
     app = QApplication(sys.argv)
+    app.setStyle(QStyleFactory.create('Fusion'))
+    apply_stylesheet(app, theme='dark_red.xml')
     ex = GuiLayout()
     sys.exit(app.exec_())
 
